@@ -1,79 +1,13 @@
-default: &defaults
-  parallelism: 1
-  working_directory: ~/SerenityJS-Cucumber-Protractor-StandAlone
-  docker:
-    - image: circleci/node:10.15.3-browsers
-  environment:
-    CHROME_BIN: "/usr/bin/google-chrome"
-  dependencies:
-    cache_directories:
-     - ~/nvm
-
-restore_npm_cache: &restore_npm_cache
-  restore_cache:
-    keys:
-      - SerenityJS-Cucumber-Protractor-StandAlone-{{ .Branch }}-{{ checksum "package.json" }}
-      - SerenityJS-Cucumber-Protractor-StandAlone-{{ .Branch }}-
-
-save_npm_cache: &save_npm_cache
-  save_cache:
-    key: SerenityJS-Cucumber-Protractor-StandAlone-{{ .Branch }}-{{ checksum "package.json" }}
-    paths:
-      - "node_modules"
-
-install_depencies_with_npm: &install_depencies_with_npm
-  run:
-    name: Npm Install
-    command: |
-      npm install
-      cd serenity-develop
-      npm install
-
-build_app: &build_app
-  run:
-    name: Next buid
-    command: |
-      npm run build
-
-start_app: &start_app
-  run:
-    name: Start app and run tests
-    command: |
-      export API_URL=https://explorer-api.staging.blockstack.xyz
-      export NODE_ENV=production
-      mkdir logs
-      touch logs/node_server.log
-      sh -c "npm start | tee logs/node_server.log" & PID=$! && echo "PID is $PID and PWD is $PWD" && sleep 30
-      cd serenity-develop
-      TEST_URL=http://localhost:3000 npm run test
-
-run_tests: &run_tests
-  run:
-    name: Run Tests
-    command: |
-      cd serenity-develop
-      TEST_URL=http://localhost:3000 npm run test
-
-store_server_logs: &store_logs
-  store_artifacts:
-    path: logs/node_server.log
-    destination: node_server.log
-
-version: 2
-jobs:
-  test:
-    <<: *defaults
-    steps:
-      - checkout
-      - *restore_npm_cache
-      - *install_depencies_with_npm
-      - *save_npm_cache
-      - *build_app
-      - *start_app
-      - *store_logs
-
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+# Use a package of configuration called an orb.
+orbs:
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.4.1
+# Orchestrate or schedule a set of jobs
 workflows:
-  version: 2
-  build-and-test:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
     jobs:
-      - test
+      - welcome/run
