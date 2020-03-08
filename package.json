@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "express-force-https": "^1.0.0",
     "fs-extra": "^7.0.0",
-    "hoist-non-react-statics": "^3.0.1",
+    "hoist-non-react-statics": "^3.3.2",
     "idx": "^2.4.0",
     "immer": "^1.7.4",
     "lru-cache": "^4.1.3",
