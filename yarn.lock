@@ -33,10 +33,10 @@
   resolved "https://registry.yarnpkg.com/@ampproject/toolbox-script-csp/-/toolbox-script-csp-1.1.1.tgz#0b049a1c86c99f300162a10e1b9ce83c6e354a45"
   integrity sha512-gACGfsVKinCy/977FSrlVgo6jxTZ0lcTCvCnRlNwvSOcxJVm+jJR3sP7/F43fpak9Gsq/EwFaatfnNMbunPc+w==
 
-"@awaitjs/express@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@awaitjs/express/-/express-0.1.4.tgz#a2833c61221b0b8ea65c15a869f3420eef7f16eb"
-  integrity sha512-ueg4Nh3dr+/Djm8tequ9lwwT6a3QsjFzxQ2Mh3rAdF3FTe5FV4L/5ip42bVOB5aBIcFsrOU18eG4TX+OWXLS8g==
+"@awaitjs/express@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@awaitjs/express/-/express-0.4.0.tgz#9c2fda58b08181a3f6bf1f3f9457752e738c666d"
+  integrity sha512-GVx/4WFnslceOBoJ3dCD22ve4imn1+7nQLFAUkc+oPkHvjntGHx4822Lk8qM1phlP+flobFO/ToyrL2bV6cAvw==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.35", "@babel/code-frame@^7.5.5", "@babel/code-frame@^7.8.3":
   version "7.8.3"
